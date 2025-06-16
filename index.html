@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Inventory Management Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-boxes"></i>
+                <span>InventoryPro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <button class="btn-login" onclick="showLogin()">Login</button>
+                <button class="btn-register" onclick="showRegister()">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Professional Inventory Management for Every Business</h1>
+            <p>Streamline your inventory tracking with real-time updates, multi-location support, and industry-specific features.</p>
+            <div class="business-types">
+                <div class="business-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Restaurants</h3>
+                    <p>Food inventory, expiration tracking, recipe management</p>
+                </div>
+                <div class="business-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Hardware Stores</h3>
+                    <p>Parts tracking, supplier management, bulk inventory</p>
+                </div>
+                <div class="business-card">
+                    <i class="fas fa-pills"></i>
+                    <h3>Pharmacies</h3>
+                    <p>Medication tracking, batch numbers, regulatory compliance</p>
+                </div>
+                <div class="business-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Retail Stores</h3>
+                    <p>Product variants, seasonal tracking, sales integration</p>
+                </div>
+            </div>
+            <button class="cta-button" onclick="showRegister()">Get Started Free</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Powerful Features for Every Business Type</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Real-Time Updates</h3>
+                    <p>Instant synchronization across all devices and locations</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics & Reports</h3>
+                    <p>Detailed insights into your inventory performance</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bell"></i>
+                    <h3>Smart Alerts</h3>
+                    <p>Low stock, expiration, and reorder notifications</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Ready</h3>
+                    <p>Access your inventory anywhere, anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="businessName">Business Name:</label>
+                    <input type="text" id="businessName" required>
+                </div>
+                <div class="form-group">
+                    <label for="businessType">Business Type:</label>
+                    <select id="businessType" required>
+                        <option value="">Select Business Type</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="hardware">Hardware Store</option>
+                        <option value="pharmacy">Pharmacy</option>
+                        <option value="retail">Retail Store</option>
+                        <option value="grocery">Grocery Store</option>
+                        <option value="warehouse">Warehouse</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ownerName">Owner/Manager Name:</label>
+                    <input type="text" id="ownerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard (Hidden initially) -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <div class="dashboard-header">
+            <h1 id="businessNameDisplay">Welcome to Your Dashboard</h1>
+            <div class="user-info">
+                <span id="userNameDisplay"></span>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+            </div>
+        </div>
+
+        <div class="dashboard-nav">
+            <button class="tab-button active" onclick="showTab('inventory')">
+                <i class="fas fa-boxes"></i> Inventory
+            </button>
+            <button class="tab-button" onclick="showTab('add-item')">
+                <i class="fas fa-plus"></i> Add Item
+            </button>
+            <button class="tab-button" onclick="showTab('reports')">
+                <i class="fas fa-chart-bar"></i> Reports
+            </button>
+            <button class="tab-button" onclick="showTab('settings')">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </div>
+
+        <!-- Inventory Tab -->
+        <div id="inventory-tab" class="tab-content active">
+            <div class="inventory-controls">
+                <input type="text" id="searchInput" placeholder="Search inventory..." onkeyup="searchInventory()">
+                <select id="categoryFilter" onchange="filterInventory()">
+                    <option value="">All Categories</option>
+                </select>
+                <button onclick="exportInventory()" class="btn-secondary">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+            <div class="inventory-table-container">
+                <table id="inventoryTable" class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Value</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryTableBody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Add Item Tab -->
+        <div id="add-item-tab" class="tab-content">
+            <div class="add-item-form">
+                <h3>Add New Item</h3>
+                <form id="addItemForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemName">Item Name:</label>
+                            <input type="text" id="itemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemCategory">Category:</label>
+                            <select id="itemCategory" required>
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemQuantity">Quantity:</label>
+                            <input type="number" id="itemQuantity" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemUnit">Unit:</label>
+                            <input type="text" id="itemUnit" placeholder="e.g., pieces, kg, liters" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemPrice">Unit Price:</label>
+                            <input type="number" id="itemPrice" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="minStock">Minimum Stock Level:</label>
+                            <input type="number" id="minStock" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-row" id="expirationRow" style="display: none;">
+                        <div class="form-group">
+                            <label for="expirationDate">Expiration Date:</label>
+                            <input type="date" id="expirationDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="batchNumber">Batch Number:</label>
+                            <input type="text" id="batchNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemDescription">Description:</label>
+                        <textarea id="itemDescription" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Item</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Reports Tab -->
+        <div id="reports-tab" class="tab-content">
+            <div class="reports-container">
+                <h3>Inventory Reports</h3>
+                <div class="report-cards">
+                    <div class="report-card">
+                        <h4>Total Items</h4>
+                        <div class="report-value" id="totalItems">0</div>
+                    </div>
+                    <div class="report-card">
+                        <h4>Total Value</h4>
+                        <div class="report-value" id="totalValue">$0.00</div>
+                    </div>
+                    <div class="report-card">
+                        <h4>Low Stock Items</h4>
+                        <div class="report-value" id="lowStockItems">0</div>
+                    </div>
+                    <div class="report-card">
+                        <h4>Categories</h4>
+                        <div class="report-value" id="totalCategories">0</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="inventoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+            <div class="settings-container">
+                <h3>Account Settings</h3>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="settingsBusinessName">Business Name:</label>
+                        <input type="text" id="settingsBusinessName">
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsEmail">Email:</label>
+                        <input type="email" id="settingsEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsPhone">Phone:</label>
+                        <input type="tel" id="settingsPhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency:</label>
+                        <select id="currency">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="JPY">JPY (¥)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
